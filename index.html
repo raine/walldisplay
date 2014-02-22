@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="walldisplay">
 <head>
   <title></title>
   <meta charset="utf-8" />
@@ -7,22 +7,18 @@
   <script src="javascripts/jquery.js"></script>
   <script src="javascripts/jquery.fittext.js"></script>
   <script src="javascripts/bower_components/angular/angular.js"></script>
-  <script src="javascripts/walldisplay.js"></script>
+  <script src="javascripts/bower_components/lodash/dist/lodash.js"></script>
+  <script src="javascripts/app/app.js"></script>
 </head>
 <body>
-  <div id="container">
-    <div class="item red">
-      <h1>front master</h1>
-    </div>
-    <div class="item green">
-      <h1>front develop</h1>
-    </div>
-    <div class="item green">
-      <h1>api master</h1>
-    </div>
-    <div class="item green">
-      <h1>api develop</h1>
-    </div>
+  <div id="container" ng-controller="JobCtrl">
+    <job ng-repeat="job in jobs"></job>
   </div>
+
+  <script type="text/ng-template" id="job.html">
+    <div class="job-container green">
+      <h1>{{job.name}}</h1>
+    </div>
+  </script>
 </body>
 </html>

@@ -16,6 +16,6 @@
   ],
   "dependencies": {
     "angular": "~1.2.13",
-    "doc-ready": "desandro/doc-ready#~1.0.2"
+    "lodash": "~2.4.1"
   }
 }
