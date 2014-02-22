@@ -1,0 +1,21 @@
+{
+  "name": "walldisplay",
+  "version": "0.0.0",
+  "authors": [
+    "Raine Virta <raine.virta@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "javascripts/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.2.13",
+    "doc-ready": "desandro/doc-ready#~1.0.2"
+  }
+}
