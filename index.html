@@ -12,7 +12,7 @@
 </head>
 <body>
   <div id="container" ng-controller="JobCtrl">
-    <job ng-repeat="job in jobs"></job>
+    <job data="job" ng-repeat="job in jobs"></job>
   </div>
 
   <script type="text/ng-template" id="job.html">

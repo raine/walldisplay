@@ -3,7 +3,12 @@
 var app = angular.module('walldisplay', []);
 
 app.controller('JobCtrl', function($scope, $timeout) {
-  $scope.jobs = _.range(4).map(function() { return dummyJob() });
+  $scope.jobs = [
+    job('front master'),
+    job('front develop'),
+    job('api master'),
+    job('api develop'),
+  ];
 
   // $timeout(function() {
   //   $scope.jobs = _.rest($scope.jobs);
@@ -23,7 +28,7 @@ app.directive('job', function($window) {
     templateUrl: 'job.html',
     restrict: 'E',
     scope: {
-
+      job: '=data'
     },
     link: function(scope, element) {
       var $container = element.find('.job-container');
@@ -31,10 +36,6 @@ app.directive('job', function($window) {
 
       jobs.push(element);
       $text.fitText();
-
-      scope.job = {
-        name: 'front master'
-      };
 
       element.recalcHeight = function() {
         var pct = 100 / jobs.length;
@@ -56,8 +57,8 @@ app.directive('job', function($window) {
   };
 });
 
-function dummyJob() {
+function job(name) {
   return {
-    name: 'front master'
+    name: name
   };
 }
