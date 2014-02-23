@@ -14,14 +14,6 @@ body {
           box-sizing: border-box;
 }
 
-.fail {
-  background-color: hsl(0, 100%, 40%);
-}
-
-.success {
-  background-color: hsl(120, 100%, 40%);
-}
-
 #jobs {
   height: 100%;
 }
@@ -51,4 +43,20 @@ body {
   position: absolute;
   height: 100%;
   box-shadow: inset 1px 4px 9px -6px #000;
+}
+
+.fail {
+  background-color: hsl(0, 100%, 35%);
+}
+
+.success {
+  background-color: hsl(120, 100%, 35%);
+}
+
+.fail .progress {
+  background-color: hsl(0, 100%, 50%);
+}
+
+.success .progress {
+  background-color: hsl(120, 100%, 50%);
 }
