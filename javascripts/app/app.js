@@ -52,6 +52,7 @@ app.directive('job', function($window) {
 
       scope.$on('$destroy', function() {
         jobs = _.without(jobs, element);
+        recalcHeights();
       });
     }
   };
