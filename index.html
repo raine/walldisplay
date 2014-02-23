@@ -11,12 +11,13 @@
   <script src="javascripts/app/app.js"></script>
 </head>
 <body>
-  <div id="container" ng-controller="JobCtrl">
+  <div id="jobs" ng-controller="JobCtrl">
     <job data="job" ng-repeat="job in jobs"></job>
   </div>
 
   <script type="text/ng-template" id="job.html">
-    <div class="job-container green">
+    <div class="job-container fail">
+      <div class="progress" ng-style="{ width: job.progress + '%' }"></div>
       <h1>{{job.name}}</h1>
     </div>
   </script>

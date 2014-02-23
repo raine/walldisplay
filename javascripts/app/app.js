@@ -60,6 +60,7 @@ app.directive('job', function($window) {
 
 function job(name) {
   return {
-    name: name
+    name: name,
+    progress: 20
   };
 }
