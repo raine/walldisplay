@@ -16,6 +16,7 @@
   ],
   "dependencies": {
     "angular": "~1.2.13",
-    "lodash": "~2.4.1"
+    "lodash": "~2.4.1",
+    "eventEmitter": "~4.2.7"
   }
 }

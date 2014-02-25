@@ -1,20 +1,5 @@
 'use strict';
 
-var app = angular.module('walldisplay', []);
-
-app.controller('JobCtrl', function($scope, $timeout) {
-  $scope.jobs = [
-    job('front master'),
-    job('front develop'),
-    job('api master'),
-    job('api develop'),
-  ];
-
-  // $timeout(function() {
-  //   $scope.jobs = _.rest($scope.jobs);
-  // }, 1000)
-});
-
 app.directive('job', function($window) {
   var jobs = [];
 
@@ -57,10 +42,3 @@ app.directive('job', function($window) {
     }
   };
 });
-
-function job(name) {
-  return {
-    name: name,
-    progress: 20
-  };
-}
