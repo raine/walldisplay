@@ -22,7 +22,7 @@
   </div>
 
   <script type="text/ng-template" id="job.html">
-    <div class="job-container fail">
+    <div class="job-container {{job.status}}">
       <div class="progress" ng-style="{ width: job.progress + '%' }"></div>
       <h1>{{job.name}}</h1>
     </div>

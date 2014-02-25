@@ -31,3 +31,68 @@ app.service('Socket', function($location) {
 
   return new Socket;
 });
+
+app.service('FakeSocket', function($location) {
+  var jobs = [
+    job('front master'),
+    job('front develop')
+  ];
+
+  function Socket() {}
+
+  Socket.prototype = new EventEmitter();
+  Socket.prototype.start = function() {
+    var self = this;
+
+    this.update({ jobs: jobs });
+  };
+
+  Socket.prototype.update = function(data) {
+    this.emit('message', data);
+  };
+
+  var socket = new Socket();
+  return socket;
+});
+
+function job(name) {
+  return {
+    name: name,
+    started: minuteAgo(),
+    finished: now(),
+    status: 'success'
+  };
+}
+
+function now() {
+  return (new Date).toISOString();
+}
+
+function minuteAgo() {
+  return (new Date(Date.now() - 60 * 1000)).toISOString();
+}
+
+
+/*
+ * {
+ *   "jobs": [
+ *       {
+ *       "name": "front master",
+ *       "previous": {
+ *         "finished": "2014-02-23T11:53:54.054Z",
+ *         "name": "front master",
+ *         "started": "2014-02-23T11:50:54.054Z",
+ *         "status": "finished"
+ *       },
+ *       "started": "2014-02-23T11:50:54.054Z",
+ *       "status": "pending"
+ *     },
+ *     {
+ *       "finished": "2014-02-23T11:53:54.054Z",
+ *       "name": "front develop",
+ *       "started": "2014-02-23T11:50:54.054Z",
+ *       "status": "success"
+ *     }
+ *   ]
+ * }
+ */
