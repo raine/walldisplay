@@ -18,10 +18,10 @@
         job: '=data'
       },
       link: function(scope, element) {
-        console.log('link');
         scope.jobClass = jobClass;
         var $container = element.find('.job-container');
         var $text      = element.find('h1');
+        var job        = scope.job;
 
         jobs.push(element);
         $text.fitText();
@@ -44,14 +44,13 @@
           recalcHeights();
         });
 
-        var job = scope.job;
         (function tick() {
           if (job.status === 'pending') {
             var lastDur = new Date(job.previous.finished) - new Date(job.previous.started);
             var elapsed = new Date() - new Date(job.started)
             var width   = elapsed / lastDur * 100
 
-            scope.job.progress = width;
+            job.progress = width;
           }
 
           animate(tick);

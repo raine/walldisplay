@@ -44,7 +44,7 @@
         previous: {
           started: ago(1001),
           finished: ago(1000),
-          status: _.sample(['fail', 'success'])
+          status: failOrSuccess()
         }
       },
       {
@@ -55,7 +55,18 @@
         previous: {
           started: ago(1001),
           finished: ago(1000),
-          status: _.sample(['fail', 'success'])
+          status: failOrSuccess()
+        }
+      },
+      {
+        name: 'api master',
+        started: ago(5),
+        finished: ago(3),
+        status: 'success',
+        previous: {
+          started: ago(1001),
+          finished: ago(1000),
+          status: failOrSuccess()
         }
       }
     ];
@@ -76,12 +87,19 @@
     };
 
     function loop() {
-      startBuild(jobs[0]);
-      fs.update(jobs);
-      $timeout(function() {
-        finishBuild(jobs[0]);
+      var done = _.filter(jobs, notPending);
+      var job  = _.sample(done);
+      if (job) {
+        startBuild(job);
         fs.update(jobs);
-      }, 100000);
+
+        $timeout(function() {
+          finishBuild(job);
+          fs.update(jobs);
+        }, lastDuration(job));
+      };
+
+      $timeout(loop, 1000);
     }
 
     var fs = new FakeSocket();
@@ -97,7 +115,7 @@
   }
 
   function finishBuild(job) {
-    job.status = _.sample(['success', 'fail']);
+    job.status   = failOrSuccess();
     job.finished = now();
   }
 
@@ -110,9 +128,17 @@
       previous: {
         started: ago(3000),
         finished: ago(2940),
-        status: _.sample(['fail', 'success'])
+        status: failOrSuccess()
       }
     };
+  }
+
+  function lastDuration(job) {
+    return new Date(job.previous.finished) - new Date(job.previous.started);
+  }
+
+  function notPending(job) {
+    return job.status !== 'pending';
   }
 
   function now() {
@@ -121,6 +147,10 @@
 
   function ago(secs) {
     return (new Date(Date.now() - secs * 60 * 1000)).toISOString();
+  }
+
+  function failOrSuccess() {
+    return _.sample(['fail', 'success']);
   }
 
   app.factory('animate', function($window, $rootScope) {
