@@ -55,18 +55,6 @@
 
           animate(tick);
         })();
-
-        /*
-         * scope.$watch('job', function(val, old) {
-         *   var job = scope.job;
-         *   console.log(job.name, job.status);
-         *   // Job started
-         *   if (job.status === 'pending') {
-         *     progressLoop();
-         *   }
-         * }, true);
-         */
-
       }
     };
   });
