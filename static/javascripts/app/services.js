@@ -167,27 +167,3 @@
     };
   });
 })();
-
-/*
- * {
- *   "jobs": [
- *       {
- *       "name": "front master",
- *       "previous": {
- *         "finished": "2014-02-23T11:53:54.054Z",
- *         "name": "front master",
- *         "started": "2014-02-23T11:50:54.054Z",
- *         "status": "finished"
- *       },
- *       "started": "2014-02-23T11:50:54.054Z",
- *       "status": "pending"
- *     },
- *     {
- *       "finished": "2014-02-23T11:53:54.054Z",
- *       "name": "front develop",
- *       "started": "2014-02-23T11:50:54.054Z",
- *       "status": "success"
- *     }
- *   ]
- * }
- */
