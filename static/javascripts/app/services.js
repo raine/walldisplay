@@ -38,33 +38,33 @@
     var jobsFixture = [
       {
         name: 'front master',
-        started: ago(5),
+        started: ago(10),
         finished: ago(3),
         status: 'success',
         previous: {
-          started: ago(1001),
+          started: ago(1010),
           finished: ago(1000),
           status: failOrSuccess()
         }
       },
       {
         name: 'front develop',
-        started: ago(5),
-        finished: ago(3),
+        started: ago(20),
+        finished: ago(5),
         status: 'success',
         previous: {
-          started: ago(1001),
+          started: ago(1010),
           finished: ago(1000),
           status: failOrSuccess()
         }
       },
       {
         name: 'api master',
-        started: ago(5),
-        finished: ago(3),
+        started: ago(7),
+        finished: ago(4),
         status: 'success',
         previous: {
-          started: ago(1001),
+          started: ago(1010),
           finished: ago(1000),
           status: failOrSuccess()
         }
@@ -99,7 +99,7 @@
         }, lastDuration(job));
       };
 
-      $timeout(loop, 1000);
+      $timeout(loop, 5000);
     }
 
     var fs = new FakeSocket();
@@ -146,7 +146,7 @@
   }
 
   function ago(secs) {
-    return (new Date(Date.now() - secs * 60 * 1000)).toISOString();
+    return (new Date(Date.now() - secs * 1000)).toISOString();
   }
 
   function failOrSuccess() {
