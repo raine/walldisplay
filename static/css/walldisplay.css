@@ -34,8 +34,8 @@ body {
   text-align: center;
   font-size: 10vh;
   color: #fff;
-  text-shadow: 5px 5px 0px hsla(0, 0%, 0%, 0.3);
   background: transparent;
+  text-shadow: 5px 5px 0px hsla(0, 0%, 0%, 0.3);
 }
 
 .progress {
@@ -45,18 +45,46 @@ body {
   box-shadow: inset 1px 4px 9px -6px #000;
 }
 
-.fail {
+.job-container.fail {
   background-color: hsl(0, 100%, 35%);
 }
 
-.success {
+.job-container.success {
   background-color: hsl(120, 100%, 35%);
 }
 
-.fail .progress {
+.job-container.fail .progress {
   background-color: hsl(0, 100%, 50%);
 }
 
-.success .progress {
+.job-container.success .progress {
   background-color: hsl(120, 100%, 50%);
 }
+
+.job-container.first {
+  background-color: #ccc;
+  background-image: -webkit-linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+  background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+}
+
+.job.container.first .progress {
+  /* background-color: hsl(120, 100%, 50%); */
+}
+
+/*
+ * -webkit-animation: progress-animation 2s linear infinite;
+ * animation: progress-animation 2s linear infinite;
+ * -webkit-transition: width .6s ease;
+ * transition: width .6s ease;
+ */
+
+/*
+ * @-webkit-keyframes progress-animation {
+ *   from {
+ *     background-position: 320px 0;
+ *   }
+ *   to {
+ *     background-position: 0 0;
+ *   }
+ * }
+ */

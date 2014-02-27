@@ -22,8 +22,8 @@
   </div>
 
   <script type="text/ng-template" id="job.html">
-    <div class="job-container {{job.status}}">
-      <div class="progress" ng-style="{ width: job.progress + '%' }"></div>
+    <div class="job-container" ng-class="jobClass(job)">
+      <div ng-if="job.status === 'pending'" ng-style="{ width: job.progress + '%' }" class="progress"></div>
       <h1>{{job.name}}</h1>
     </div>
   </script>
