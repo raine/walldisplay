@@ -19,6 +19,7 @@
       },
       link: function(scope, element) {
         scope.jobClass = jobClass;
+
         var $container = element.find('.job-container');
         var $text      = element.find('h1');
         var job        = scope.job;
@@ -60,10 +61,14 @@
   });
 
   function jobClass(job) {
-    if (job.previous) {
-      return job.previous.status;
+    if (job.status === 'pending') {
+      if (job.previous) {
+        return job.previous.status;
+      } else {
+        return 'first';
+      }
     } else {
-      return 'first';
+      return job.status;
     }
   }
 })();

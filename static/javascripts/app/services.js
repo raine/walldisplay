@@ -107,6 +107,7 @@
   });
 
   function startBuild(job) {
+    job.previous.status   = job.status;
     job.previous.started  = job.started;
     job.previous.finished = job.finished;
     job.status  = 'pending';
