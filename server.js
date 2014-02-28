@@ -29,7 +29,7 @@ app.post('/travis', function(req, res) {
   var payload = JSON.parse(req.body.payload);
 
   mongo.connect().then(function(db) {
-    var coll = db.collection('notifications');
+    var coll = db.collection('travis_payloads');
     coll.insertAsync(payload).then(function() {
       res.send(200);
     });
