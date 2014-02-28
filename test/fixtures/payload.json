@@ -1,0 +1,89 @@
+{
+    "author_email": "raine.virta@gmail.com",
+    "author_name": "Raine Virta",
+    "branch": "test",
+    "build_url": "https://magnum.travis-ci.com/futurice/habbo-stories-travis-cmds/builds/2714518",
+    "commit": "7d27a0309667912a1bb08fc5d7f482ed5861260f",
+    "committed_at": "2014-02-27T20:54:50Z",
+    "committer_email": "raine.virta@gmail.com",
+    "committer_name": "Raine Virta",
+    "compare_url": "https://github.com/futurice/habbo-stories-travis-cmds/compare/28a4b72ed56c...7d27a0309667",
+    "config": {
+        ".result": "configured",
+        "language": "node_js",
+        "node_js": [
+            "0.10"
+        ],
+        "notifications": {
+            "webhooks": {
+                "on_start": true,
+                "urls": [
+                    "lol"
+                ]
+            }
+        },
+        "script": [
+            "sh ./travis-test.sh"
+        ],
+        "walldisplay": {
+            "test": true
+        }
+    },
+    "duration": null,
+    "finished_at": null,
+    "id": 2714518,
+    "matrix": [
+        {
+            "author_email": "raine.virta@gmail.com",
+            "author_name": "Raine Virta",
+            "branch": "test",
+            "commit": "7d27a0309667912a1bb08fc5d7f482ed5861260f",
+            "committed_at": "2014-02-27T20:54:50Z",
+            "committer_email": "raine.virta@gmail.com",
+            "committer_name": "Raine Virta",
+            "compare_url": "https://github.com/futurice/habbo-stories-travis-cmds/compare/28a4b72ed56c...7d27a0309667",
+            "config": {
+                ".result": "configured",
+                "language": "node_js",
+                "node_js": "0.10",
+                "notifications": {
+                    "webhooks": {
+                        "on_start": true,
+                        "urls": [
+                            "lol"
+                        ]
+                    }
+                },
+                "script": [
+                    "sh ./travis-test.sh"
+                ],
+                "walldisplay": {
+                    "test": true
+                }
+            },
+            "id": 3760774,
+            "message": "test config",
+            "number": "10.1",
+            "parent_id": 2714518,
+            "repository_id": 214317,
+            "result": null,
+            "started_at": "2014-02-28T21:41:03Z",
+            "state": "started",
+            "status": null
+        }
+    ],
+    "message": "test config",
+    "number": "10",
+    "repository": {
+        "id": 214317,
+        "name": "habbo-stories-travis-cmds",
+        "owner_name": "futurice",
+        "url": null
+    },
+    "result": 1,
+    "result_message": "Pending",
+    "started_at": "2014-02-28T21:41:03Z",
+    "status": 1,
+    "status_message": "Pending",
+    "type": "push"
+}
