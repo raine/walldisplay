@@ -7,6 +7,8 @@
 
     FakeSocket.on('message', function(data) {
       // console.log('data', JSON.stringify(data, null, 4));
+      // TODO: can angular.copy be used here?
+      // angular.copy(data, $scope.jobs);
       if (_.isEmpty($scope.jobs)) {
         $scope.jobs = data.jobs;
       } else {
