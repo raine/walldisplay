@@ -2,6 +2,7 @@ var should = require('should')
   , travis = require('../lib/travis')
   , preparePayload = travis.preparePayload
   , processPayload = travis.processPayload
+  , recent2job = travis.recent2job
   , parseStatusMessage = travis.parseStatusMessage
   , fs = require('fs')
   , _ = require('lodash')
@@ -72,8 +73,27 @@ describe('travis', function() {
   });
 
   describe('recent2job', function() {
-    it('should get the last non-pending build to previous');
-    it('should set the display name based on the latest config display_name');
+    var payload;
+    before(function() {
+      payload = preparePayload(payloadJSON);
+    });
+
+    it('should get the last non-pending build to previous', function() {
+    });
+
+    describe('config', function() {
+      it('should set the display name', function() {
+        payload = _.cloneDeep(payload);
+        payload.config.walldisplay.display_name = 'hello world';
+        recent2job([ payload ]).name.should.equal('hello world');
+      });
+
+      it('should replace %branch% with branch', function() {
+        payload = _.cloneDeep(payload);
+        payload.config.walldisplay.display_name = 'hello world %branch%';
+        recent2job([ payload ]).name.should.equal('hello world ' + payload.branch);
+      });
+    });
   });
 });
 

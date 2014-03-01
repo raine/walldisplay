@@ -26,7 +26,7 @@
             "sh ./travis-test.sh"
         ],
         "walldisplay": {
-            "test": true
+            "display_name": "test %branch%"
         }
     },
     "duration": null,
@@ -58,7 +58,7 @@
                     "sh ./travis-test.sh"
                 ],
                 "walldisplay": {
-                    "test": true
+                    "display_name": "test %branch%"
                 }
             },
             "id": 3760774,
