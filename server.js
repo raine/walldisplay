@@ -9,7 +9,7 @@ var WebSocketServer = require('ws').Server
   , request = require('request')
   , fs = Promise.promisifyAll(require('fs'))
   , mongo = require('./lib/mongo')
-  , utils = require('./lib/utils');
+  , travis = require('./lib/travis');
 
 app.use(express.json());
 app.use(express.urlencoded());
@@ -30,7 +30,7 @@ wss.on('connection', function(ws) {
 });
 
 app.post('/travis', function(req, res) {
-  var payload = utils.preparePayload(req.body.payload);
+  var payload = travis.preparePayload(req.body.payload);
 
   mongo.connect().then(function(db) {
     var coll = db.collection('travis_payloads');

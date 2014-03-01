@@ -1,12 +1,12 @@
 var should = require('should')
-  , utils = require('../lib/utils')
-  , preparePayload = utils.preparePayload
+  , travis = require('../lib/travis')
+  , preparePayload = travis.preparePayload
   , fs = require('fs')
   , _ = require('lodash');
 
 var payloadJSON = fs.readFileSync('test/fixtures/payload.json', 'utf8');
 
-describe('utils', function() {
+describe('travis', function() {
   describe('preparePayload', function() {
     var payload;
     before(function() {
