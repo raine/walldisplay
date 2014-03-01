@@ -28,7 +28,12 @@ wss.on('connection', function(ws) {
 app.post('/travis', function(req, res) {
   travis.putPayload(
     travis.preparePayload(req.body.payload)
-  );
+  ).then(function() {
+    res.send(200);
+  }).catch(function(err) {
+    console.error(err.stack);
+    res.send(500);
+  });
 });
 
 server.listen(port);
