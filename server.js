@@ -3,12 +3,8 @@ var WebSocketServer = require('ws').Server
   , app = express()
   , _ = require('lodash')
   , http = require('http')
-  , Promise = require('bluebird')
   , port = process.env.PORT || 3000
-  , format = require('util').format
   , request = require('request')
-  , fs = Promise.promisifyAll(require('fs'))
-  , mongo = require('./lib/mongo')
   , travis = require('./lib/travis');
 
 app.use(express.json());
@@ -30,17 +26,9 @@ wss.on('connection', function(ws) {
 });
 
 app.post('/travis', function(req, res) {
-  var payload = travis.preparePayload(req.body.payload);
-
-  mongo.connect().then(function(db) {
-    var coll = db.collection('travis_payloads');
-    return coll.insertAsync(payload).then(function() {
-      res.send(200);
-    });
-  }).catch(function(err) {
-    console.error(err.stack);
-    res.send(500);
-  });
+  travis.putPayload(
+    travis.preparePayload(req.body.payload)
+  );
 });
 
 server.listen(port);
