@@ -5,6 +5,8 @@ var WebSocketServer = require('ws').Server
   , http = require('http')
   , port = process.env.PORT || 3000
   , request = require('request')
+  , util = require('util')
+  , format = util.format
   , travis = require('./lib/travis');
 
 app.use(express.json());
@@ -27,6 +29,8 @@ wss.on('connection', function(ws) {
 
 // TODO: Log build started/finished/failed whatever
 app.post('/travis', function(req, res) {
+  util.puts(format('incoming payload from travis %s', req.body.payload));
+
   travis.putPayload(
     travis.preparePayload(req.body.payload)
   ).then(function() {
