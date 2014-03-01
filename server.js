@@ -32,9 +32,7 @@ wss.on('connection', function(ws) {
 app.post('/travis', function(req, res) {
   util.puts(format('incoming payload from travis %s', req.body.payload));
 
-  travis.putPayload(
-    travis.preparePayload(req.body.payload)
-  ).then(function() {
+  travis.insert(req.body.payload).then(function() {
     res.send(200);
   }).catch(function(err) {
     console.error(err.stack);
