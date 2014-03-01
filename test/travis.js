@@ -70,6 +70,10 @@ describe('travis', function() {
       parseStatusMessage('Still Failing').should.equal('fail');
     });
   });
+
+  describe('recent2job', function() {
+    it('should get the last non-pending build to previous');
+  });
 });
 
 function keys(obj) {
