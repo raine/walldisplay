@@ -7,7 +7,8 @@ var WebSocketServer = require('ws').Server
   , request = require('request')
   , util = require('util')
   , format = util.format
-  , travis = require('./lib/travis');
+  , travis = require('./lib/travis')
+;
 
 app.use(express.json());
 app.use(express.urlencoded());

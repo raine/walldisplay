@@ -2,7 +2,8 @@ var should = require('should')
   , travis = require('../lib/travis')
   , preparePayload = travis.preparePayload
   , fs = require('fs')
-  , _ = require('lodash');
+  , _ = require('lodash')
+;
 
 var payloadJSON = fs.readFileSync('test/fixtures/payload.json', 'utf8');
 
