@@ -1,6 +1,8 @@
 var should = require('should')
   , travis = require('../lib/travis')
   , preparePayload = travis.preparePayload
+  , processPayload = travis.processPayload
+  , parseStatusMessage = travis.parseStatusMessage
   , fs = require('fs')
   , _ = require('lodash')
 ;
@@ -24,6 +26,48 @@ describe('travis', function() {
 
     it('should have no keys with a dot', function() {
       _.any(keys(payload), hasDot).should.be.false;
+    });
+  });
+
+  describe('processPayload', function() {
+    var processed, unprocessedPayload;
+    before(function() {
+      unprocessedPayload = preparePayload(payloadJSON);
+      processed = processPayload(unprocessedPayload);
+    });
+
+    it('should grab params to walldisplay format', function() {
+      processed.started.should.equal(unprocessedPayload.started_at);
+      should(processed.finished).equal(unprocessedPayload.finished_at);
+      processed.branch.should.equal(unprocessedPayload.branch);
+      processed.repo.should.equal(unprocessedPayload.repository.name);
+      processed.status.should.equal(parseStatusMessage(unprocessedPayload.status_message));
+    });
+  });
+
+  describe('parseStatusMessage', function() {
+    it('should know "Pending"', function() {
+      parseStatusMessage('Pending').should.equal('pending');
+    });
+
+    it('should know "Passed"', function() {
+      parseStatusMessage('Passed').should.equal('success');
+    });
+
+    it('should know "Fixed"', function() {
+      parseStatusMessage('Fixed').should.equal('success');
+    });
+
+    it('should know "Failed"', function() {
+      parseStatusMessage('Failed').should.equal('fail');
+    });
+
+    it('should know "Broken"', function() {
+      parseStatusMessage('Broken').should.equal('fail');
+    });
+
+    it('should know "Still Failing"', function() {
+      parseStatusMessage('Still Failing').should.equal('fail');
     });
   });
 });
