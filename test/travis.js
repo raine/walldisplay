@@ -73,6 +73,7 @@ describe('travis', function() {
 
   describe('recent2job', function() {
     it('should get the last non-pending build to previous');
+    it('should set the display name based on the latest config display_name');
   });
 });
 
