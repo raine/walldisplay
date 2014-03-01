@@ -25,6 +25,7 @@ wss.on('connection', function(ws) {
   });
 });
 
+// TODO: Log build started/finished/failed whatever
 app.post('/travis', function(req, res) {
   travis.putPayload(
     travis.preparePayload(req.body.payload)
