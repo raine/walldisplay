@@ -2,13 +2,13 @@
 
 (function() {
   var app = angular.module('walldisplay');
-  app.controller('JobCtrl', function($scope, $timeout, FakeSocket) {
+  app.controller('JobCtrl', function($scope, $timeout, Source) {
     $scope.jobs = [];
 
-    FakeSocket.on('message', function(data) {
+    Source.on('jobs', function(data) {
       // console.log('data', JSON.stringify(data, null, 4));
       // TODO: can angular.copy be used here?
-      // angular.copy(data, $scope.jobs);
+
       if (_.isEmpty($scope.jobs)) {
         $scope.jobs = data.jobs;
       } else {
@@ -21,9 +21,8 @@
           }
         });
       }
-      // console.log('jobs', JSON.stringify($scope.jobs, null, 4));
-    });
 
-    FakeSocket.start();
+      $scope.$apply();
+    });
   });
 })();

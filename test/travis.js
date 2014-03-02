@@ -111,6 +111,7 @@ describe('travis', function() {
   });
 });
 
+// Returns all keys of an object. recursively
 function keys(obj) {
   return _.reduce(obj, function(mem, val, key) {
     return mem.concat(_.isPlainObject(val) ? keys(val) : key);

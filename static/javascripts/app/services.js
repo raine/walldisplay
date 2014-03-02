@@ -2,6 +2,31 @@
 
 (function() {
   var app = angular.module('walldisplay');
+
+  app.service('Source', function() {
+    function Source() {
+      var self = this;
+      var es = new EventSource('/jobs');
+
+      es.onopen = function(ev) {
+        console.debug('opened eventsource', ev.target.url);
+      };
+
+      es.onerror = function(ev) {
+        if (ev.target.readyState === EventSource.CLOSED) {
+          es.close();
+        }
+      };
+
+      es.addEventListener('jobs', function(ev) {
+        self.emit('jobs', JSON.parse(event.data));
+      });
+    }
+
+    Source.prototype = new EventEmitter();
+    return new Source;
+  });
+
   app.service('Socket', function($location) {
     function Socket() {
       var self = this;
