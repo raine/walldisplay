@@ -85,7 +85,7 @@ describe('travis', function() {
     });
 
     describe('config', function() {
-      it('should set the display name', function() {
+      it('should use display_name', function() {
         payload.config.walldisplay.display_name = 'hello world';
         recent2job(recent).name.should.equal('hello world');
       });
@@ -101,10 +101,10 @@ describe('travis', function() {
       });
 
       describe('defaults', function() {
-        it('should set the default display name if config.display_name is not set', function() {
+        it('should set the default display name', function() {
           delete payload.config.walldisplay.display_name;
-          recent2job(recent).name
-            .should.equal(format('%s/%s', payload.repository.name, payload.branch));
+          var def = format('%s/%s', payload.repository.name, payload.branch);
+          recent2job(recent).name.should.equal(def);
         });
       });
     });
