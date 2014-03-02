@@ -48,5 +48,11 @@ function broadcastJobs() {
   });
 }
 
+function ping() {
+  sse.clients.broadcast({ ping: 1 }, 'ping');
+}
+
+setInterval(ping, 10000);
+
 server.listen(port);
 console.log('Express app started on port %d', port);

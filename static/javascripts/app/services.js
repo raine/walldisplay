@@ -21,6 +21,10 @@
       es.addEventListener('jobs', function(ev) {
         self.emit('jobs', JSON.parse(event.data));
       });
+
+      es.addEventListener('ping', function(ev) {
+        console.log('got ping');
+      });
     }
 
     Source.prototype = new EventEmitter();
