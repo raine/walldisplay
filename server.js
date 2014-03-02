@@ -4,7 +4,6 @@ var WebSocketServer = require('ws').Server
   , _ = require('lodash')
   , http = require('http')
   , port = process.env.PORT || 3000
-  , request = require('request')
   , util = require('util')
   , format = util.format
   , travis = require('./lib/travis')
