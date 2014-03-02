@@ -103,8 +103,8 @@ describe('travis', function() {
       describe('defaults', function() {
         it('should set the default display name', function() {
           delete payload.config.walldisplay.display_name;
-          var def = format('%s/%s', payload.repository.name, payload.branch);
-          recent2job(recent).name.should.equal(def);
+          var defaultName = format('%s/%s', payload.repository.name, payload.branch);
+          recent2job(recent).name.should.equal(defaultName);
         });
       });
     });
