@@ -113,11 +113,7 @@ describe('travis', function() {
 
 function keys(obj) {
   return _.reduce(obj, function(mem, val, key) {
-    if (_.isPlainObject(val)) {
-      return mem.concat(keys(val));
-    } else {
-      return mem.concat(key);
-    }
+    return mem.concat(_.isPlainObject(val) ? keys(val) : key);
   }, []);
 };
 
