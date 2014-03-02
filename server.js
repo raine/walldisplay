@@ -25,10 +25,7 @@ app.post('/travis', function(req, res) {
   util.puts(format('incoming payload from travis %s', req.body.payload));
 
   travis.insert(req.body.payload).then(function() {
-    travis.recent().then(function(jobs) {
-      broadcast({ jobs: jobs }, 'jobs');
-    });
-
+    broadcastJobs();
     res.send(200);
   }).catch(function(err) {
     console.error(err.stack);
@@ -37,39 +34,20 @@ app.post('/travis', function(req, res) {
 });
 
 app.get('/jobs', function(req, res) {
-  handleOpen(res);
-  req.connection.addListener('close', _.partial(handleClose, res), false);
+  sse.clients.open(res);
 
-  travis.recent().then(function(jobs) {
-    broadcast({ jobs: jobs }, 'jobs');
-  });
+  req.connection.addListener('close', function() {
+    sse.clients.close(res);
+  }, false);
+
+  broadcastJobs();
 });
+
+function broadcastJobs() {
+  travis.recent().then(function(jobs) {
+    sse.clients.broadcast({ jobs: jobs }, 'jobs');
+  });
+}
 
 server.listen(port);
 console.log('Express app started on port %d', port);
-
-function handleOpen(res) {
-  clients.push(res);
-  sse.head(res);
-  console.log('connection opened.', clientsCount());
-}
-
-function handleClose(res) {
-  clients = _.without(clients, res);
-  console.log('connection closed.', clientsCount());
-}
-
-function clientsCount() {
-  return format('clients: %d', clients.length);
-}
-
-function broadcast(obj, type) {
-  console.log(format('broadcasting to %d client(s).', clients.length))
-
-  _.forEach(clients, function(res) {
-    sse.send(res, obj, type);
-  });
-}
-
-var sse = {};
-
