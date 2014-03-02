@@ -6,6 +6,7 @@ var should = require('should')
   , parseStatusMessage = travis.parseStatusMessage
   , fs = require('fs')
   , _ = require('lodash')
+  , format = require('util').format
 ;
 
 var payloadJSON = fs.readFileSync('test/fixtures/payload.json', 'utf8');
@@ -73,25 +74,38 @@ describe('travis', function() {
   });
 
   describe('recent2job', function() {
-    var payload;
-    before(function() {
+    var payload, recent;
+    beforeEach(function() {
       payload = preparePayload(payloadJSON);
+      recent  = [ payload ];
     });
 
     it('should get the last non-pending build to previous', function() {
+
     });
 
     describe('config', function() {
       it('should set the display name', function() {
-        payload = _.cloneDeep(payload);
         payload.config.walldisplay.display_name = 'hello world';
-        recent2job([ payload ]).name.should.equal('hello world');
+        recent2job(recent).name.should.equal('hello world');
       });
 
-      it('should replace %branch% with branch', function() {
-        payload = _.cloneDeep(payload);
+      it('should replace %branch% with `branch`', function() {
         payload.config.walldisplay.display_name = 'hello world %branch%';
-        recent2job([ payload ]).name.should.equal('hello world ' + payload.branch);
+        recent2job(recent).name.should.equal('hello world ' + payload.branch);
+      });
+
+      it('should replace %repo% with `repo`', function() {
+        payload.config.walldisplay.display_name = 'hello world %repo%';
+        recent2job(recent).name.should.equal('hello world ' + payload.repository.name);
+      });
+
+      describe('defaults', function() {
+        it('should set the default display name if config.display_name is not set', function() {
+          delete payload.config.walldisplay.display_name;
+          recent2job(recent).name
+            .should.equal(format('%s/%s', payload.repository.name, payload.branch));
+        });
       });
     });
   });
