@@ -35,6 +35,7 @@ app.post('/travis', function(req, res) {
 app.get('/jobs', function(req, res) {
   sse.clients.open(res);
 
+  // TODO: doesn't work on Heroku
   req.connection.addListener('close', function() {
     sse.clients.close(res);
   }, false);
