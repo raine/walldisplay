@@ -47,11 +47,10 @@
 
         (function tick() {
           if (job.status === 'pending') {
-            var lastDur = new Date(job.previous.finished) - new Date(job.previous.started);
-            var elapsed = new Date() - new Date(job.started)
-            var width   = elapsed / lastDur * 100
-
-            job.progress = width;
+            var lastDur  = new Date(job.previous.finished) - new Date(job.previous.started);
+            var elapsed  = new Date() - new Date(job.started)
+            var width    = elapsed / lastDur * 100
+            job.progress = width > 100 ? 100 : width;
           }
 
           animate(tick);
