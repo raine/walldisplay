@@ -53,6 +53,7 @@ function ping() {
   sse.clients.broadcast({ ping: 1 }, 'ping');
 }
 
+// Pings are needed to keep the connection alive on Heroku
 setInterval(ping, 10000);
 
 server.listen(port);
