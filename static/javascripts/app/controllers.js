@@ -2,7 +2,7 @@
 
 (function() {
   var app = angular.module('walldisplay');
-  app.controller('JobCtrl', function($scope, $timeout, Source) {
+  app.controller('JobCtrl', function($scope, $timeout, Source, $window) {
     $scope.jobs = [];
 
     Source.on('jobs', function(data) {
@@ -23,6 +23,14 @@
       }
 
       $scope.$apply();
+    });
+
+    var init = Date.now();
+    Source.on('open', function() {
+      var sinceInit = Date.now() - init;
+      if (sinceInit > (60 * 60 * 1000)) {
+        $window.location.reload();
+      }
     });
   });
 })();

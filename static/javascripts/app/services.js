@@ -9,10 +9,13 @@
       var es = new EventSource('/jobs');
 
       es.onopen = function(ev) {
+        self.emit('open', ev);
         console.debug('opened eventsource', ev.target.url);
       };
 
       es.onerror = function(ev) {
+        self.emit('error', ev);
+
         if (ev.target.readyState === EventSource.CLOSED) {
           es.close();
         }
