@@ -19,7 +19,7 @@
       };
 
       es.addEventListener('jobs', function(ev) {
-        self.emit('jobs', JSON.parse(event.data));
+        self.emit('jobs', JSON.parse(ev.data));
       });
 
       es.addEventListener('ping', function(ev) {
