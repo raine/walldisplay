@@ -68,21 +68,3 @@ body {
 .job.container.first .progress {
   /* background-color: hsl(120, 100%, 50%); */
 }
-
-/*
- * -webkit-animation: progress-animation 2s linear infinite;
- * animation: progress-animation 2s linear infinite;
- * -webkit-transition: width .6s ease;
- * transition: width .6s ease;
- */
-
-/*
- * @-webkit-keyframes progress-animation {
- *   from {
- *     background-position: 320px 0;
- *   }
- *   to {
- *     background-position: 0 0;
- *   }
- * }
- */
