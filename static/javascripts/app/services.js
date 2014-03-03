@@ -31,39 +31,7 @@
     return new Source;
   });
 
-  app.service('Socket', function($location) {
-    function Socket() {
-      var self = this;
-      var host = $location.$$absUrl.replace(/^http/, 'ws');
-      var ws = new WebSocket(host);
-
-      ws.onmessage = function(event) {
-        try {
-          var data = JSON.parse(event.data);
-        } catch(e) {
-          console.error('invalid json');
-          return;
-        }
-
-        self.emit('message', data);
-      };
-
-      ws.onopen = function() {
-        console.debug('opened websocket')
-      }
-
-      // ws.onopen = function(evt) { onOpen(evt) };
-      // ws.onclose = function(evt) { onClose(evt) };
-      // ws.onmessage = function(evt) { onMessage(evt) };
-      // ws.onerror = function(evt) { onError(evt) };
-    }
-
-    Socket.prototype = new EventEmitter();
-
-    return new Socket;
-  });
-
-  app.service('FakeSocket', function($timeout) {
+  app.service('FakeSource', function($timeout) {
     var jobsFixture = [
       {
         name: 'front master',
@@ -100,39 +68,39 @@
       }
     ];
 
-    var jobs;
-    function FakeSocket() {}
+    function FakeSource(fixture) {
+      var self  = this;
+      this.jobs = fixture;
 
-    FakeSocket.prototype = new EventEmitter();
-    FakeSocket.prototype.start = function() {
-      jobs = jobsFixture;
-      this.update(jobs);
-      $timeout(loop, 1000);
-    };
+      $timeout(function() {
+        self.loop();
+      });
+    }
 
-    FakeSocket.prototype.update = function(jobs) {
+    FakeSource.prototype = new EventEmitter();
+    FakeSource.prototype.update = function(jobs) {
       // console.log(JSON.stringify(jobs, null, 4));
-      this.emit('message', { jobs: _.cloneDeep(jobs) });
+      this.emit('jobs', { jobs: _.cloneDeep(jobs) });
     };
 
-    function loop() {
-      var done = _.filter(jobs, notPending);
+    FakeSource.prototype.loop = function() {
+      var self = this;
+      var done = _.filter(this.jobs, notPending);
       var job  = _.sample(done);
       if (job) {
         startBuild(job);
-        fs.update(jobs);
+        this.update(this.jobs);
 
         $timeout(function() {
           finishBuild(job);
-          fs.update(jobs);
+          self.update(self.jobs);
         }, lastDuration(job));
       };
 
-      $timeout(loop, 5000);
-    }
+      $timeout(this.loop.bind(this), 5000);
+    };
 
-    var fs = new FakeSocket();
-    return fs;
+    return new FakeSource(jobsFixture);
   });
 
   function startBuild(job) {
