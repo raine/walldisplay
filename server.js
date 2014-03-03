@@ -10,6 +10,11 @@ var WebSocketServer = require('ws').Server
   , sse = require('./lib/sse')
 ;
 
+app.configure('development', function() {
+  app.use(require('connect-livereload')({
+    port: 35730
+  }));
+});
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.static(__dirname + '/static'));
