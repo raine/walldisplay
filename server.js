@@ -21,8 +21,7 @@ app.use(express.static(__dirname + '/static'));
 app.use(express.logger('tiny'));
 app.use(app.router);
 
-var server  = http.createServer(app);
-var clients = [];
+var server = http.createServer(app);
 
 // TODO: Log build started/finished/failed whatever
 app.post('/travis', function(req, res) {
