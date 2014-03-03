@@ -21,9 +21,6 @@ body {
 .job-container {
   width: 100%;
   position: relative;
-  /* border: 10px solid #333; */
-  /* border-color: hsla(0, 0%, 0%, 0.3); */
-  /* box-shadow: inset 0 10px 20px #000000; */
   box-shadow: inset 1px 4px 9px -6px #000;
 }
 
