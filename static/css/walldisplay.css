@@ -51,7 +51,7 @@ body {
 }
 
 .job-container.success {
-  background-color: hsl(120, 100%, 30%);
+  background-color: hsl(100, 100%, 30%);
 }
 
 .job-container.fail .progress {
@@ -59,7 +59,7 @@ body {
 }
 
 .job-container.success .progress {
-  background-color: hsl(120, 100%, 45%);
+  background-color: hsl(100, 100%, 45%);
 }
 
 .job-container.first {
