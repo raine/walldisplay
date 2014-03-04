@@ -19,19 +19,17 @@
       },
       link: function(scope, element) {
         scope.jobClass = jobClass;
-
-        var $container = element.find('.job-container');
+        var $container = angular.element(element.children()[0]);
         var $text      = element.find('h1');
         var job        = scope.job;
 
         jobs.push(element);
-        $text.fitText();
 
         element.recalcHeight = function() {
           var pct = 100 / jobs.length;
-          $container.height(pct + '%');
+          $container.css('height', pct + '%');
 
-          var height = $container.height();
+          var height = $container[0].clientHeight;
           $text.css({
             height     : height,
             lineHeight : height + 'px'

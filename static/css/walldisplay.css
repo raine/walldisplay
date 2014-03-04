@@ -32,7 +32,7 @@ body {
   padding: 0;
   position: relative;
   text-align: center;
-  font-size: 10vh;
+  font-size: 20vmin;
   color: #fff;
   background: transparent;
   text-shadow: 0.05em 0.05em 0px hsla(0, 0%, 0%, 0.3);
