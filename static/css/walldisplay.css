@@ -46,6 +46,10 @@ body {
   max-width: 100%;
 }
 
+job:first-child .job-container, job:first-child .job-container .progress {
+  box-shadow: none;
+}
+
 .job-container.fail {
   background-color: hsl(0, 100%, 30%);
 }
