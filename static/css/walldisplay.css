@@ -38,22 +38,26 @@ body {
   text-shadow: 0.05em 0.05em 0px hsla(0, 0%, 0%, 0.3);
 }
 
-@media screen and (max-width: 600px) {
-  .job-container {
-    box-shadow: inset 1px 4px 6px -6px #000;
-  }
-
-  .job-container h1 {
-    font-weight: 400;
-  }
-}
-
 .progress {
   background-color: hsl(0, 100%, 50%);
   position: absolute;
   height: 100%;
   box-shadow: inset 1px 4px 9px -6px #000;
   max-width: 100%;
+}
+
+@media screen and (max-width: 600px) {
+  .job-container {
+    box-shadow: inset 1px 4px 6px -6px #000;
+  }
+
+  .progress {
+    box-shadow: inset 1px 4px 6px -6px #000;
+  }
+
+  .job-container h1 {
+    font-weight: 400;
+  }
 }
 
 job:first-child .job-container, job:first-child .job-container .progress {
