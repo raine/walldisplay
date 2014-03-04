@@ -35,7 +35,7 @@ body {
   font-size: 10vh;
   color: #fff;
   background: transparent;
-  text-shadow: 5px 5px 0px hsla(0, 0%, 0%, 0.3);
+  text-shadow: 0.05em 0.05em 0px hsla(0, 0%, 0%, 0.3);
 }
 
 .progress {
