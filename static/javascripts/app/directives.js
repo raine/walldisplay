@@ -32,7 +32,7 @@
           var height = $container[0].clientHeight;
           $text.css({
             height     : height,
-            lineHeight : height + 'px'
+            lineHeight : height - (height * 0.05) + 'px'
           });
         };
 
