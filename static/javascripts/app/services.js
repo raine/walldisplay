@@ -38,7 +38,7 @@
     var jobsFixture = [
       {
         name: 'front master',
-        started: ago(10),
+        started: ago(70),
         finished: ago(3),
         status: 'success',
         previous: {
@@ -49,7 +49,7 @@
       },
       {
         name: 'front develop',
-        started: ago(20),
+        started: ago(50),
         finished: ago(5),
         status: 'success',
         previous: {
@@ -60,7 +60,7 @@
       },
       {
         name: 'api master',
-        started: ago(7),
+        started: ago(90),
         finished: ago(4),
         status: 'success',
         previous: {
@@ -116,7 +116,7 @@
   }
 
   function finishBuild(job) {
-    job.status   = failOrSuccess();
+    job.status   = 'success', // failOrSuccess();
     job.finished = now();
   }
 
