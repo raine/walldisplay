@@ -80,12 +80,12 @@ job:first-child .job-container, job:first-child .job-container .progress {
   background-color: hsl(100, 100%, 45%);
 }
 
-.job-container.first {
+.job-container.first-build {
   background-color: #ccc;
   background-image: -webkit-linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
   background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
 }
 
-.job.container.first .progress {
+.job.container.first-build .progress {
   /* background-color: hsl(120, 100%, 50%); */
 }

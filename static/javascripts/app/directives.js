@@ -62,7 +62,7 @@
       if (job.previous) {
         return job.previous.status;
       } else {
-        return 'first';
+        return 'first-build';
       }
     } else {
       return job.status;
