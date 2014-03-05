@@ -21,7 +21,6 @@ body {
 .job-container {
   width: 100%;
   position: relative;
-  box-shadow: inset 1px 4px 9px -6px #000;
 }
 
 .job-container h1 {
@@ -42,34 +41,76 @@ body {
   background-color: hsl(0, 100%, 50%);
   position: absolute;
   height: 100%;
-  box-shadow: inset 1px 7px 1px -6px rgba(0, 0, 0, 0.5);
   max-width: 100%;
 }
 
 @media screen and (max-width: 600px) {
-  .job-container {
-    box-shadow: inset 1px 4px 6px -6px #000;
-  }
+  /* .job-container { */
+  /*   box-shadow: inset 1px 4px 6px -6px #000; */
+  /* } */
 
-  .progress {
-    box-shadow: inset 1px 4px 6px -6px #000;
-  }
+  /* .progress { */
+  /*   box-shadow: inset 1px 4px 6px -6px #000; */
+  /* } */
 
   .job-container h1 {
     font-weight: 400;
   }
 }
 
-.job-container:first-child, .job-container:first-child .progress {
+.job-container:not(:first-child) {
+  box-shadow: inset 0 8px 8px -10px #000;
+}
+
+.job-container.in-progress {
+  box-shadow: inset 0 8px 8px -10px #000,
+              inset 0 -8px 8px -10px #000;
+
+}
+
+.job-container.in-progress:first-child {
+  box-shadow: inset 0 -8px 8px -10px #000;
+}
+
+.job-container .progress {
+  box-shadow: inset 1px 7px 1px -6px rgba(0, 0, 0, 0.5),
+              inset 1px -7px 1px -6px rgba(0, 0, 0, 0.5);
+}
+
+.job-container.in-progress + .job-container .progress {
+  box-shadow: inset 1px -7px 1px -6px rgba(0, 0, 0, 0.5);
+}
+
+.job-container.in-progress + .job-container:last-child .progress {
   box-shadow: none;
+}
+
+.job-container.in-progress + .job-container {
+  box-shadow: inset 0 -8px 8px -10px #000;
+}
+
+.job-container.in-progress + .job-container:not(.in-progress) {;
+  box-shadow: none;
+}
+
+.job-container.in-progress + .job-container:last-child {
+  box-shadow: none;
+}
+
+.job-container:first-child .progress {
+  box-shadow: inset 1px -7px 1px -6px rgba(0, 0, 0, 0.5);
 }
 
 .job-container.fail {
   background-color: hsl(0, 100%, 30%);
 }
 
+.job-container.fail.in-progress .progress {
+  background-color: hsl(0, 100%, 25%);
+}
+
 .job-container.fail .progress {
-  background-color: hsl(0, 100%, 45%);
+  background-color: hsl(0, 100%, 40%);
 }
 
 .job-container.success {
