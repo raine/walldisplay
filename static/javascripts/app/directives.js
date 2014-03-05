@@ -58,14 +58,10 @@
   });
 
   function jobClass(job) {
-    if (job.status === 'pending') {
-      if (job.previous) {
-        return job.previous.status;
-      } else {
-        return 'first-build';
-      }
+    if (job.status !== 'pending') {
+      return [ job.status ];
     } else {
-      return job.status;
+      return [ job.previous ? job.previous.status : 'first-build', 'in-progress' ]
     }
   }
 })();
