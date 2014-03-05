@@ -68,16 +68,20 @@ body {
   background-color: hsl(0, 100%, 30%);
 }
 
-.job-container.success {
-  background-color: hsl(100, 100%, 30%);
-}
-
 .job-container.fail .progress {
   background-color: hsl(0, 100%, 45%);
 }
 
+.job-container.success {
+  background-color: hsl(100, 100%, 30%);
+}
+
+.job-container.success.in-progress {
+  background-color: hsl(100, 100%, 25%);
+}
+
 .job-container.success .progress {
-  background-color: hsl(100, 100%, 45%);
+  background-color: hsl(100, 100%, 40%);
 }
 
 .job-container.first-build {
