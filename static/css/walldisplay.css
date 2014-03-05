@@ -60,7 +60,7 @@ body {
   }
 }
 
-job:first-child .job-container, job:first-child .job-container .progress {
+.job-container:first-child, .job-container:first-child .progress {
   box-shadow: none;
 }
 

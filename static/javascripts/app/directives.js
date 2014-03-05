@@ -12,6 +12,7 @@
     angular.element($window).bind('resize', recalcHeights);
 
     return {
+      replace: true,
       templateUrl: 'job.html',
       restrict: 'E',
       scope: {
@@ -19,7 +20,7 @@
       },
       link: function(scope, element) {
         scope.jobClass = jobClass;
-        var $container = angular.element(element.children()[0]);
+        var $container = element;
         var $text      = element.find('h1');
         var job        = scope.job;
 
