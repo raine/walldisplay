@@ -105,7 +105,7 @@ body {
   background-color: hsl(0, 100%, 30%);
 }
 
-.job-container.fail.in-progress .progress {
+.job-container.fail.in-progress {
   background-color: hsl(0, 100%, 25%);
 }
 
