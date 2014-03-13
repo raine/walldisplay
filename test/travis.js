@@ -60,6 +60,10 @@ describe('travis', function() {
       parseStatusMessage('Fixed').should.equal('success');
     });
 
+    it('should know "Errored"', function() {
+      parseStatusMessage('Errored').should.equal('fail');
+    });
+
     it('should know "Failed"', function() {
       parseStatusMessage('Failed').should.equal('fail');
     });
