@@ -6,7 +6,7 @@
     $scope.jobs = [];
 
     Source.on('jobs', function(data) {
-      // console.log('data', JSON.stringify(data, null, 4));
+      console.debug('data', JSON.stringify(data, null, 4));
       // TODO: can angular.copy be used here?
 
       if (_.isEmpty($scope.jobs)) {
