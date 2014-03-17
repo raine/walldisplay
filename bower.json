@@ -17,6 +17,7 @@
   "dependencies": {
     "angular": "~1.2.13",
     "lodash": "~2.4.1",
-    "eventEmitter": "~4.2.7"
+    "eventEmitter": "~4.2.7",
+    "angular-gravatar": "~0.1.3"
   }
 }

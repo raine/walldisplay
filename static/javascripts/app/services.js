@@ -38,7 +38,7 @@
     var jobsFixture = [
       {
         name: 'front master',
-        started: ago(70),
+        started: ago(10),
         finished: ago(3),
         status: 'success',
         previous: {
@@ -89,7 +89,8 @@
     FakeSource.prototype.loop = function() {
       var self = this;
       var done = _.filter(this.jobs, notPending);
-      var job  = _.sample(done);
+      var job  = _.first(done);
+      // var job  = done[1];
       if (job) {
         startBuild(job);
         this.update(this.jobs);
@@ -116,7 +117,7 @@
   }
 
   function finishBuild(job) {
-    job.status   = 'success', // failOrSuccess();
+    job.status   = failOrSuccess();
     job.finished = now();
   }
 
