@@ -37,7 +37,7 @@ body {
   text-shadow: 0.05em 0.05em 0px hsla(0, 0%, 0%, 0.3);
 }
 
-.progress {
+.job-container .progress {
   background-color: hsl(0, 100%, 50%);
   position: absolute;
   height: 100%;
