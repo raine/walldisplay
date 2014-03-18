@@ -1,5 +1,5 @@
 'use strict';
 
 (function(){
-  angular.module('walldisplay', []);
+  angular.module('walldisplay', ['ui.gravatar']);
 })();
