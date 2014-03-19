@@ -65,4 +65,14 @@
       return [ job.previous ? job.previous.status : 'first-build', 'in-progress' ]
     }
   }
+
+  // HACK: Cause repaints for CSS viewport units
+  (function() {
+    var altcrement = -1;
+    angular.element(window).bind('resize', function() {
+      var html = document.querySelectorAll('html')[0];
+      var currentFontSize = parseFloat(window.getComputedStyle(html)['font-size']);
+      angular.element(html).css('font-size', currentFontSize + (altcrement *= -1) + 'px');
+    });
+  }());
 })();
