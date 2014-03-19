@@ -14,6 +14,7 @@
     <script src="javascripts/app/controllers.js"></script>
     <script src="javascripts/app/directives.js"></script>
     <script src="javascripts/app/services.js"></script>
+    <script src="javascripts/app/filters.js"></script>
 
     <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
   </head>
@@ -28,7 +29,7 @@
         <h1 ng-bind="job.name"></h1>
         <div class="commit">
           <img class="avatar" gravatar-src="job.author_email" gravatar-size="100" />
-          <div class="message" ng-bind="job.message"></div>
+          <div class="message" ng-bind="job.message | firstline"></div>
         </div>
       </div>
     </script>
