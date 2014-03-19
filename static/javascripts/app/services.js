@@ -41,6 +41,8 @@
         started: ago(10),
         finished: ago(3),
         status: 'success',
+        author_email: 'non@existent.com',
+        message: 'Merge pull request #140 from futurice/me-page-single-creations',
         previous: {
           started: ago(1010),
           finished: ago(1000),
@@ -52,6 +54,8 @@
         started: ago(50),
         finished: ago(5),
         status: 'success',
+        author_email: 'raine.virta@sulake.com',
+        message: 'Remove %s because it looks stupid when find user req return None',
         previous: {
           started: ago(1010),
           finished: ago(1000),
@@ -63,6 +67,8 @@
         started: ago(90),
         finished: ago(4),
         status: 'success',
+        author_email: 'heikki.hakkala@futurice.com',
+        message: 'Merge branch \'me-page-link-to-single-creation\' into develop',
         previous: {
           started: ago(1010),
           finished: ago(1000),

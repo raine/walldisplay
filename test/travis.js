@@ -45,6 +45,14 @@ describe('travis', function() {
       processed.repo.should.equal(unprocessedPayload.repository.name);
       processed.status.should.equal(parseStatusMessage(unprocessedPayload.status_message));
     });
+
+    it('should grab the commit message', function() {
+      processed.commit_message = unprocessedPayload.message;
+    });
+
+    it('should grab the commit author email', function() {
+      processed.author_email = unprocessedPayload.author_email;
+    })
   });
 
   describe('parseStatusMessage', function() {
