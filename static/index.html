@@ -25,7 +25,11 @@
     <script type="text/ng-template" id="job.html">
       <div class="job-container" ng-class="jobClass(job)">
         <div ng-if="job.status === 'pending'" ng-style="{ width: job.progress + '%' }" class="progress"></div>
-        <h1>{{job.name}}</h1>
+        <h1 ng-bind="job.name"></h1>
+        <div class="commit">
+          <img class="avatar" gravatar-src="job.author_email" gravatar-size="100" />
+          <div class="message" ng-bind="job.message"></div>
+        </div>
       </div>
     </script>
   </body>

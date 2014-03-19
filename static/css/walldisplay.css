@@ -135,3 +135,35 @@ body {
 .job.container.first-build .progress {
   /* background-color: hsl(120, 100%, 50%); */
 }
+
+.job-container .commit {
+  width: 100%;
+  height: 2em;
+  position: absolute;
+  bottom: 0;
+  font-family: 'Lato', 'Helvetica Neue', Helvetica, sans-serif;
+  font-size: 3vmin;
+  padding: 0 0 .4em .4em;
+}
+
+.job-container .commit .avatar {
+  height: 100%;
+  float: left;
+  margin-right: .3em;
+  border-radius: 50%;
+}
+
+.job-container .commit .message {
+  float: left;
+  /* color: #fff; */
+  /* color: hsla(360, 0%, 70%, 1.0); */
+  /* text-shadow: 0.1em 0.1em 0px hsla(0, 0%, 0%, 0.2); */
+  /* color: #CB9797; */
+  color: hsla(360, 100%, 100%, 0.6);
+  text-shadow: 0.1em 0.1em 0px hsla(0, 0%, 0%, 0.2);
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+}
